@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Forma 1 definicion de rutas
 Route::get('/', function () {
-    return view('welcome');
+    $viewData = [];
+    $viewData["title"] = "Home Page - Online Store";
+    return view('home.index')->with("viewData", $viewData);
 });
+
+// Forma 2 Definicion de rutas con controlador
+Route::get('/about', 'App\Http\Controllers\HomeController@about')->name("home.about");
