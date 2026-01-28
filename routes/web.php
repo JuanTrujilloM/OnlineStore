@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Forma 1 definicion de rutas
-Route::get('/', function () {
-    $viewData = [];
-    $viewData["title"] = "Home Page - Online Store";
-    return view('home.index')->with("viewData", $viewData);
-});
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
 
 // Forma 2 Definicion de rutas con controlador
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name("home.about");
+
